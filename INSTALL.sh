@@ -3,9 +3,9 @@
 # ZSH =========================================================================
 if [ -f /etc/arch-release ]; then
 	sudo pacman -S zsh
-elif [ -f /etc/lsb-release ]
+elif [ -f /etc/lsb-release ]; then
 	sudo apt-get install zsh
-elif [ 'darwin' == `uname | tr '[:upper:]' '[:lower:]'` ]
+elif [ 'darwin' == `uname | tr '[:upper:]' '[:lower:]'` ]; then
 	brew install zsh
 fi
 
@@ -14,14 +14,15 @@ pushd ~
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 popd
 
+mv ~/.zshrc ~/.zshrc.install.bak
 cp .zshrc ~/.zshrc
 
 # TASKWARRIOR =================================================================
 if [ -f /etc/arch-release ]; then
 	sudo pacman -S task taskd
-elif [ -f /etc/lsb-release ]
+elif [ -f /etc/lsb-release ]; then
 	sudo apt-get install taskwarrior taskd
-elif [ 'darwin' == `uname | tr '[:upper:]' '[:lower:]'` ]
+elif [ 'darwin' == `uname | tr '[:upper:]' '[:lower:]'` ]; then
 	brew install task taskd
 fi
 
